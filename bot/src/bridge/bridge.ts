@@ -7,6 +7,7 @@ import {
   MinecraftLeaveEvent,
   MinecraftDeathEvent,
   MinecraftAdvancementEvent,
+  MinecraftQuestCompleteEvent,
   MinecraftPlayersResponse
 } from 'minecraft/types';
 import { getEnv } from 'shared/env';
@@ -56,6 +57,9 @@ class Bridge {
       case 'advancement':
         this.handleAdvancement(event);
         break;
+      case 'quest_complete':
+        this.handleQuestComplete(event);
+        break;
       case 'players_response':
         this.handlePlayersResponse(event);
         break;
@@ -84,6 +88,13 @@ class Bridge {
 
   private handleAdvancement(event: MinecraftAdvancementEvent): void {
     const message = `🏆 <b>${this.escapeHtml(event.player)}</b> has made the advancement <i>${this.escapeHtml(event.advancement)}</i>`;
+    this.sendToTelegram(message);
+  }
+
+  private handleQuestComplete(event: MinecraftQuestCompleteEvent): void {
+    const emoji = event.isChapter ? '📖' : '✅';
+    const type = event.isChapter ? 'chapter' : 'quest';
+    const message = `${emoji} <b>${this.escapeHtml(event.player)}</b> completed ${type} <i>${this.escapeHtml(event.questName)}</i> in <i>${this.escapeHtml(event.chapterName)}</i>`;
     this.sendToTelegram(message);
   }
 

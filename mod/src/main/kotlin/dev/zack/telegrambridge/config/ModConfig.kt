@@ -12,7 +12,8 @@ data class ConfigData(
     val botUrl: String = "ws://localhost:3000/ws",
     val secret: String = "change-me-to-match-bot-ws-secret",
     val reconnectDelayMs: Long = 5000,
-    val maxReconnectDelayMs: Long = 60000
+    val maxReconnectDelayMs: Long = 60000,
+    var questNotifications: Boolean = true
 )
 
 object ModConfig {
@@ -39,7 +40,7 @@ object ModConfig {
         }
     }
 
-    private fun save() {
+    fun save() {
         try {
             val content = json.encodeToString(ConfigData.serializer(), config)
             Files.writeString(configPath, content)

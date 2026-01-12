@@ -9,6 +9,20 @@ group = project.property("mod_group_id") as String
 
 repositories {
     mavenCentral()
+    // Architectury (required by FTB mods)
+    maven {
+        name = "Architectury Maven"
+        url = uri("https://maven.architectury.dev/")
+    }
+    // FTB Mods
+    maven {
+        name = "FTB Maven"
+        url = uri("https://maven.ftb.dev/releases")
+    }
+    maven {
+        name = "Saps Maven"
+        url = uri("https://maven.saps.dev/minecraft")
+    }
 }
 
 base {
@@ -42,6 +56,11 @@ dependencies {
     jarJar("com.squareup.okhttp3:okhttp:[4.12.0,5.0.0)")
     jarJar("com.squareup.okio:okio:[3.0.0,4.0.0)")
     jarJar("com.squareup.okio:okio-jvm:[3.0.0,4.0.0)")
+
+    // FTB Quests - optional integration (compileOnly = soft dependency)
+    compileOnly("dev.ftb.mods:ftb-library-neoforge:2101.1.11")
+    compileOnly("dev.ftb.mods:ftb-quests-neoforge:2101.1.6")
+    compileOnly("dev.ftb.mods:ftb-teams-neoforge:2101.1.2")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {

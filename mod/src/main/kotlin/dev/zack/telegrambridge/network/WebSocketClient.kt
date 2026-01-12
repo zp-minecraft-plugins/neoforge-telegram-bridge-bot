@@ -58,6 +58,16 @@ sealed class OutgoingMessage {
     ) : OutgoingMessage()
 
     @Serializable
+    data class QuestComplete(
+        val type: String = "quest_complete",
+        val player: String,
+        val questName: String,
+        val chapterName: String,
+        val isChapter: Boolean = false,
+        val timestamp: Long = System.currentTimeMillis()
+    ) : OutgoingMessage()
+
+    @Serializable
     data class PlayersResponse(
         val type: String = "players_response",
         val players: List<String>,
@@ -218,6 +228,7 @@ object WebSocketClient {
                 is OutgoingMessage.Leave -> json.encodeToString(message)
                 is OutgoingMessage.Death -> json.encodeToString(message)
                 is OutgoingMessage.Advancement -> json.encodeToString(message)
+                is OutgoingMessage.QuestComplete -> json.encodeToString(message)
                 is OutgoingMessage.PlayersResponse -> json.encodeToString(message)
             }
             webSocket?.send(text)

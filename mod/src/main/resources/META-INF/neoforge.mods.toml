@@ -30,3 +30,10 @@ type = "required"
 versionRange = "[5.0.0,)"
 ordering = "NONE"
 side = "SERVER"
+
+[[dependencies.${mod_id}]]
+modId = "ftbquests"
+type = "optional"
+versionRange = "[2101.1.0,)"
+ordering = "AFTER"
+side = "SERVER"

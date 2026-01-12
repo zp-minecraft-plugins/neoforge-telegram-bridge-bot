@@ -7,6 +7,7 @@ export type MinecraftEventType =
   | 'leave'
   | 'death'
   | 'advancement'
+  | 'quest_complete'
   | 'players_response';
 
 export interface MinecraftChatEvent {
@@ -42,6 +43,15 @@ export interface MinecraftAdvancementEvent {
   timestamp: number;
 }
 
+export interface MinecraftQuestCompleteEvent {
+  type: 'quest_complete';
+  player: string;
+  questName: string;
+  chapterName: string;
+  isChapter: boolean;
+  timestamp: number;
+}
+
 export interface MinecraftPlayersResponse {
   type: 'players_response';
   players: string[];
@@ -55,6 +65,7 @@ export type MinecraftEvent =
   | MinecraftLeaveEvent
   | MinecraftDeathEvent
   | MinecraftAdvancementEvent
+  | MinecraftQuestCompleteEvent
   | MinecraftPlayersResponse;
 
 // Bot -> Mod messages
@@ -90,6 +101,7 @@ export function isMinecraftEvent(data: unknown): data is MinecraftEvent {
       'leave',
       'death',
       'advancement',
+      'quest_complete',
       'players_response'
     ].includes(obj.type)
   );
