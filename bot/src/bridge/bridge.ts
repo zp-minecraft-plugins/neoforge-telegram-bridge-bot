@@ -118,11 +118,13 @@ class Bridge {
 
   // Send a message from Telegram to Minecraft
   sendToMinecraft(username: string, message: string): void {
-    connectionManager.sendToMod({
+    console.log(`[Bridge] Sending to Minecraft: ${username}: ${message}`);
+    const success = connectionManager.sendToMod({
       type: 'chat',
       username,
       message
     });
+    console.log(`[Bridge] Message sent: ${success}`);
   }
 
   // Request player list from Minecraft
