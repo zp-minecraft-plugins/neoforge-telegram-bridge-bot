@@ -1,5 +1,12 @@
 Change log
 
+# [1.1.0](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/compare/v1.0.3...v1.1.0) (2026-01-12)
+
+
+### Features
+
+* add FTB Quests integration for quest completion notifications ([e13d907](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/commit/e13d9079f3f81be8d0c790ac607dc1215d3d26ab))
+
 ## [1.0.3](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/compare/v1.0.2...v1.0.3) (2026-01-12)
 
 
