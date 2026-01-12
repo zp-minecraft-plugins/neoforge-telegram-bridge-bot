@@ -7,7 +7,9 @@ type TextContext = Context<Update.MessageUpdate<Message.TextMessage>>;
 
 export function chatEvent(bot: Telegraf) {
   const targetChatId = getEnv('TELEGRAM_CHAT_ID');
-  console.log(`[ChatEvent] Listening for messages from chat ID: ${targetChatId}`);
+  console.log(
+    `[ChatEvent] Listening for messages from chat ID: ${targetChatId}`
+  );
 
   // Debug: log all incoming updates
   bot.use((ctx, next) => {
