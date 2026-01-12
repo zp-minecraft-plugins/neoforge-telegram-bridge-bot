@@ -32,13 +32,16 @@ neoForge {
 }
 
 dependencies {
-    // Kotlin
+    // Kotlin (provided by Kotlin for Forge)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${project.property("kotlin_version")}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
-    // OkHttp for WebSocket client
+    // OkHttp for WebSocket client - use jarJar to bundle it
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    jarJar("com.squareup.okhttp3:okhttp:[4.12.0,5.0.0)")
+    jarJar("com.squareup.okio:okio:[3.0.0,4.0.0)")
+    jarJar("com.squareup.okio:okio-jvm:[3.0.0,4.0.0)")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
