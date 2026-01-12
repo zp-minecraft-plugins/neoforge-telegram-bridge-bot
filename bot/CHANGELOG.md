@@ -1,5 +1,12 @@
 Change log
 
+## [1.0.3](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/compare/v1.0.2...v1.0.3) (2026-01-12)
+
+
+### Bug Fixes
+
+* prettier formatting ([1735eb4](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/commit/1735eb4d6a1a567cdbb515c22900fbc8b46482de))
+
 ## [1.0.2](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/compare/v1.0.1...v1.0.2) (2026-01-12)
 
 
