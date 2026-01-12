@@ -1,5 +1,12 @@
 Change log
 
+## [1.0.2](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/compare/v1.0.1...v1.0.2) (2026-01-12)
+
+
+### Bug Fixes
+
+* bundle OkHttp dependencies in mod JAR using jarJar ([0fc13b9](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/commit/0fc13b93ca5d1168d939f58f54108a9153f4a700))
+
 ## [1.0.1](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/compare/v1.0.0...v1.0.1) (2026-01-12)
 
 
