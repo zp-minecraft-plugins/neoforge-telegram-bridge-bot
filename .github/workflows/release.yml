@@ -24,6 +24,9 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -33,7 +36,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./bot
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Semantic Release
         id: semantic
