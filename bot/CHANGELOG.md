@@ -1,5 +1,12 @@
 Change log
 
+# [1.2.0](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/compare/v1.1.0...v1.2.0) (2026-01-13)
+
+
+### Features
+
+* add player count on join with interactive button and /who command ([11634bf](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/commit/11634bfea27538795e8a926a48c38334937c1ebb))
+
 # [1.1.0](https://github.com/zp-minecraft-plugins/neoforge-telegram-bridge-bot/compare/v1.0.3...v1.1.0) (2026-01-12)
 
 
