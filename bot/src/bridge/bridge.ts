@@ -1,4 +1,4 @@
-import { Telegraf } from 'telegraf';
+import { Telegraf, Markup } from 'telegraf';
 import { connectionManager } from 'minecraft/connectionManager';
 import {
   MinecraftEvent,
@@ -71,9 +71,12 @@ class Bridge {
     this.sendToTelegram(message);
   }
 
-  private handleJoin(event: MinecraftJoinEvent): void {
-    const message = `🟢 <b>${this.escapeHtml(event.player)}</b> joined the game`;
-    this.sendToTelegram(message);
+  private async handleJoin(event: MinecraftJoinEvent): Promise<void> {
+    const response = await this.getPlayers();
+    const count = response?.count ?? '?';
+    const max = response?.max ?? '?';
+    const message = `🟢 <b>${this.escapeHtml(event.player)}</b> joined the game\n<i>Players online: ${count}/${max}</i>`;
+    this.sendToTelegramWithButton(message);
   }
 
   private handleLeave(event: MinecraftLeaveEvent): void {
@@ -121,6 +124,24 @@ class Bridge {
     try {
       await this.bot.telegram.sendMessage(this.chatId, message, {
         parse_mode: 'HTML'
+      });
+    } catch (error) {
+      console.error('[Bridge] Failed to send message to Telegram:', error);
+    }
+  }
+
+  private async sendToTelegramWithButton(message: string): Promise<void> {
+    if (!this.bot || !this.chatId) {
+      console.error('[Bridge] Bot or chat ID not configured');
+      return;
+    }
+
+    try {
+      await this.bot.telegram.sendMessage(this.chatId, message, {
+        parse_mode: 'HTML',
+        ...Markup.inlineKeyboard([
+          Markup.button.callback('👥 Show Players', 'show_players')
+        ])
       });
     } catch (error) {
       console.error('[Bridge] Failed to send message to Telegram:', error);
